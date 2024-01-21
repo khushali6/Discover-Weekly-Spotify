@@ -1,4 +1,4 @@
-name: run main.py
+name: run spotifyWeekly.py
 
 on:
   schedule:
@@ -27,7 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: execute py script # run main.py
+      - name: execute py script 
         run: python spotifyWeekly.py
           
       - name: commit files
@@ -41,4 +41,4 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main 
+          branch: master
