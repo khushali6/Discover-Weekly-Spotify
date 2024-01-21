@@ -29,5 +29,8 @@ jobs:
 
       - name: execute py script 
         run: python spotifyWeekly.py
-          
+      
+
+      - name: Debug info
+        run: echo "Debug information here"
       
