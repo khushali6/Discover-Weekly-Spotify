@@ -2,7 +2,7 @@ name: run spotifyWeekly.py
 
 on:
   schedule:
-    - cron: '*/2 * * * *' # At 00:00 on Monday
+    - cron: '0 0 * * 1' # At 00:00 on Monday
 
 jobs:
   build:
@@ -10,12 +10,12 @@ jobs:
     steps:
 
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner
+        uses: actions/checkout@v2 
 
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11' # install the python version needed
+          python-version: '3.11' 
 
       - name: set up environment variables
         run: |
@@ -30,15 +30,4 @@ jobs:
       - name: execute py script 
         run: python spotifyWeekly.py
           
-      - name: commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
-          
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.PUSH_TOKEN }}
-          branch: master
+      
