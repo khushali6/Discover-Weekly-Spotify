@@ -2,7 +2,7 @@ name: run spotifyWeekly.py
 
 on:
   schedule:
-    - cron: '*/2 * * * *' 
+    - cron: '0 0 1 * *' 
 
 jobs:
   build:
